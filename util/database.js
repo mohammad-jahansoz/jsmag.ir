@@ -2,12 +2,9 @@ require("dotenv").config();
 const { MongoClient } = require("mongodb");
 
 const client = new MongoClient(process.env.DATABASE_URL, {
-  // const client = new MongoClient(
-  // "mongodb://root:XayVTOf9JCGa9KBDTQC5u97b@esme.iran.liara.ir:32785/my-app?authSource=admin",
-  // {
+  
   authSource: "admin",
-  // useNewUrlParser: true,
-  // useUnifiedTopology: true,
+
 });
 
 let dbConnection;
