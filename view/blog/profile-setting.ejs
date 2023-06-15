@@ -1,0 +1,31 @@
+<%- include('../includes/head-blog') -%>
+<%- include('../includes/link-blog') -%>
+<%- include('../includes/meno-blog') -%>
+
+<div class="setting-el">
+  <main
+      aria-labelledby="pageTitle"
+      class="flex items-center justify-center  bg-cartColor max-w-7xl mx-auto rounded-2xl my-5 " style="margin-bottom: 100px;">
+      <div class="w-full ">
+        <form action="/setting/profile/images/users"  method="post" enctype="multipart/form-data" class="profile-setting-el flex items-center  justify-around text-white" >
+          
+            <img id="output" src="<%= (user.imageUrl) ? user.imageUrl : '/public\\images\\users\\1401&9&20،‏20-28-48-default-profile3.jpg' %>"
+            class="object-cover" style="width: 128px; height: 128px; border-radius: 100%; " >
+            <input type="file" id="image" name="image" accept="image/*" onchange="previewImage(event)" >
+          
+            <input type="hidden" value="user._id">
+            <span>
+              <label for="name">نام:</label>
+              <input type="text" class="text-black" name="name" id="name" placeholder="نام" value="<%= (user.name) ? user.name : '' %>" >
+            </span>
+            <button type="submit" class="p-2 bg-primaryColor text-black" id="save">ذخیره</button>
+          </form>
+      </div>
+      <div style=" min-width: 20%; text-align: center; border: 1px solid #f7df1e; font-size: larger; display: flex; flex-direction: column; gap: 10px; " class="rounded-l-xl h-full text-white flex flex-col">
+        <h3 style="font-size:x-large; border-bottom: 1px solid #f7df1e; border-radius: 20px;">setting</h3>
+        <a href="/setting/likes/<%= user.email %>">لایک ها</a>
+        <a href="/setting/profile">تنظیمات پروفایل</a>
+      </div>
+  </main>
+</div>
+<%- include('../includes/footer') -%>

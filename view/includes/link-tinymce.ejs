@@ -1,0 +1,36 @@
+
+<script src="/js/tinymce/tinymce.min.js" referrerpolicy="origin"></script>
+<script>
+  tinymce.init({
+    selector: ".textarea",
+
+    language: 'fa',
+    plugins: [
+     'directionality','a11ychecker','advlist','advcode','advtable','autolink','checklist','export','fullscreen',
+     'lists','link','image','charmap','preview','anchor','searchreplace','visualblocks',
+     'powerpaste','fullscreen','formatpainter','insertdatetime','media','table','help','wordcount','codesample'
+
+   ],
+   toolbar: 'undo redo | fontsize forecolor casechange blocks | bold  backcolor | ' +
+     'alignleft aligncenter alignright alignjustify | ' + 'ltr rtl |' +
+     'bullist numlist checklist outdent indent |  fullscreen | a11ycheck code codesample table help directionality'  ,
+     codesample_languages: [
+    {text: 'HTML/XML', value: 'markup'},
+    {text: 'JavaScript', value: 'javascript'},
+    {text: 'CSS', value: 'css'},
+    {text: 'PHP', value: 'php'},
+  ],
+    toolbar_mode: "floating",
+    tinycomments_mode: "embedded",
+    tinycomments_author: "Author name",
+    skin: "oxide-dark",
+    content_css: "dark",
+  });
+  
+</script>
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp"
+/>
+<link rel="stylesheet" href="/css/style.css" />
+</head>

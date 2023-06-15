@@ -1,0 +1,55 @@
+<%- include('../includes/header') -%>
+<%- include('../includes/link') -%>
+<%- include('../includes/meno') -%>
+      <!-- start middle section -->
+      <main>
+        <div class="insights grid grid-cols-1 gap-7">
+          <!-- total view -->
+          <div class="post-main-top views gap-2 grid grid-cols-4">
+            <div class="text-center">
+              <span class="material-icons-sharp"> people </span>
+              <div class="left">
+                <h3>Total Users</h3>
+                <h2>113</h2>
+              </div>
+            </div>
+            <div class="text-center">
+              <span class="material-icons-sharp"> chat </span>
+              <div class="left">
+                <h3>Total  Comments</h3>
+                <h2></h2>
+              </div>
+            </div>
+            <div class="text-center">
+              <span class="material-icons-sharp"> chat </span>
+              <div class="left">
+                <h3>Total User Comments</h3>
+                <h2>81</h2>
+              </div>
+            </div>
+            <div class="text-center">
+              <span class="material-icons-sharp"> favorite </span>
+              <div class="left">
+                <h3>Total Like</h3>
+                <h2><%= likes.length %></h2>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- start posts section -->
+        <div class="likes-section-single-post">
+          <h1 class="khat" style="font-family: tanha;">لایک های پست( <%= pageTitle %>)</h1>
+          <ul class="like-container-single-post">
+            <% for(like of likes){ %>
+              <% if(like.email != 'guest'){%>
+                <li>
+                  <a href="/admin/user/sendEmail/<%= like.email %>"><%= like.email%></a>
+                  <p><%= like.date.toLocaleString('fa-IR-u-nu-latn') %></p>
+                </li>
+                <% } %>
+              <% } %>
+          </ul>
+        </div>
+      </main>
+    </div>
+      <%- include('../includes/end') -%>

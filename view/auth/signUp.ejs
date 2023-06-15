@@ -1,0 +1,119 @@
+<%- include('../includes/head-blog') -%>
+<%- include('../includes/link-blog') -%>
+<%- include('../includes/meno-blog') -%>
+
+
+
+
+<div class=" login-el  ">
+  <!-- component -->
+<div class="flex items-center  p-4  lg:justify-center mx-auto rounded-2xl my-5">
+<div
+class="flex flex-col-reverse  overflow-hidden bg-cartColor rounded-md shadow-lg max md:flex-row md:flex-1 lg:max-w-screen-md"
+>
+<div
+class="p-4 py-6 text-gray-900 bg-primaryColor md:w-80 md:flex-shrink-0 md:flex md:flex-col md:items-center md:justify-evenly"
+>
+<div class="my-3 text-2xl font-semibold tracking-wider text-center ">
+  <a class="bg-cartColor pt-3  px-4 rounded-xl text-white" href="#">
+    <span class="text-primaryColor text-4xl">JS</span>
+    MAG.IR
+  </a>
+</div>
+<p class="mt-6 font-normal text-center  md:mt-0">
+  JSMAG بلاگ تخصصی آموزش Node.js  و تکنولوژی های سمت سروری جاوا اسکریپت
+</p>
+<p class="flex flex-col items-center justify-center mt-10 text-center">
+  <span>اکانت دارید؟</span>
+  <a href="/auth/login" class="underline text-blue-600">وارد شوید!</a>
+</p>
+<p class="mt-6 text-xs text-center ">
+  کلیه حقوق محصولات و محتوای این سایت متعلق به JSMAG.IR می باشد و هر گونه کپی برداری از محتوا و محصولات سایت غیر مجاز و بدون رضایت ماست.  
+
+</p>
+</div>
+<div class="p-5 bg-cartColor md:flex-1">
+<h3 class="my-4 text-2xl font-semibold text-white">Account SignUp</h3>
+<form action="/auth/signup" class="flex flex-col space-y-5" method="POST">
+  <div class="flex flex-col space-y-1">
+    <label for="email" class="text-sm font-semibold text-gray-200">آدرس ایمیل</label>
+    <input
+    name="email"
+      type="email"
+      id="email"
+      autofocus
+      class="px-4 py-2 transition duration-300 border border-gray-300 rounded focus:border-transparent focus:outline-none focus:ring-4 focus:ring-blue-200"
+    />
+  </div>
+  <div class="flex flex-col space-y-1">
+    <div class="flex items-center justify-between">
+      <label for="password" class="text-sm font-semibold text-gray-200">پسورد</label>
+    </div>
+    <input
+    name="password"
+      type="password"
+      id="password"
+      class="px-4 py-2 transition duration-300 border border-gray-300 rounded focus:border-transparent focus:outline-none focus:ring-4 focus:ring-blue-200"
+    />
+  </div>
+  <div class="">
+    <button
+      type="submit"
+      class="w-full px-4 py-2 text-lg font-semibold text-white transition-colors duration-300 bg-blue-500 rounded-md shadow hover:bg-blue-600 focus:outline-none focus:ring-blue-200 focus:ring-4"
+    >
+      ثبت نام
+    </button>
+  </div>
+  <div class="flex flex-col space-y-5">
+    <span class="flex items-center justify-center space-x-2">
+      <span class="h-px bg-gray-400 w-14"></span>
+      <span class="font-normal text-white">یا با گوگل ثبت نام کنید</span>
+      <span class="h-px bg-gray-400 w-14"></span>
+    </span>
+    <div class="flex flex-col space-y-4">
+     
+      <a
+        href="#"
+        class="flex items-center justify-center px-4 py-2 space-x-2 transition-colors duration-300 border border-blue-500 rounded-md group hover:bg-blue-500 focus:outline-none"
+      >
+        <span>
+          <svg class="text-blue-500 group-hover:text-white" width="20" height="20" fill="currentColor">
+            <path
+              d="M6.29 18.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0020 3.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.073 4.073 0 01.8 7.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 010 16.407a11.616 11.616 0 006.29 1.84"
+            ></path>
+          </svg>
+        </span>
+        <span class="text-sm font-medium text-blue-500 group-hover:text-white">Google</span>
+      </a>
+    </div>
+  </div>
+</form>
+</div>
+</div>
+</div>
+</div>
+
+<%- include('../includes/footer') -%>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

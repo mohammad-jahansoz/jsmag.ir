@@ -1,0 +1,97 @@
+<%- include('../includes/header') -%>
+<%- include('../includes/link-tinymce') -%>
+<%- include('../includes/meno') -%>
+      <!-- start middle section -->
+      <main>
+        <div class="add-post">
+          <div class="khat">
+            <h2>Edit Post</h2>
+          </div>
+          <div class="">
+            <form
+              action="/admin/posts/update-post/images/posts"
+              method="POST"
+              class="add-post-container"
+              enctype="multipart/form-data"
+            >
+              <input
+                type="text"
+                name="title"
+                class="title"
+                placeholder="title"
+                value="<%= title %>"
+              />
+              <input type="file" name="image"  accept="image/*" value="<%= imageUrl %>"/>
+              <input
+                type="text"
+                name="description"
+                class="description"
+                placeholder="description"
+                minlength="50"
+                maxlength="300"
+                value="<%= description %>"
+              />
+              <div class="sac">
+                <div class="text-input">
+                  <p>Post Status?</p>
+                  <input
+                    type="radio"
+                    name="status"
+                    id="status_show"
+                    value="show"
+                    class="status"
+                    <% let check = (status == 'show') ? 'checked' : '' %>
+                    <%= check %> 
+                  />
+                  <label for="show">show</label>
+                  <input
+                    type="radio"
+                    name="status"
+                    id="status_hidden"
+                    value="hidden"
+                    <%  check = (status == 'hidden') ? 'checked' : '' %>
+                    <%= check %>
+                  />
+                  <label for="hidden">hidden</label>
+                </div>
+                <div class="text-input">
+                  <p>Author?</p>
+                  <select name="author" id="author" class="author" name="author">
+                    <label for="author">author</label>
+                    <option value="Mohammad jahansoz">Mohammad Jahansoz</option>
+                  </select>
+                </div>
+                <div class="text-input">
+                  <p>Category?</p>
+                  <select name="category" id="category" class="category">
+                    <option value="javascript"  <%= (category == "javascript") ? 'selected' : '' %> >JavaScript</option>
+                    <option value="node.js&express.js"  <%= (category == "node.js&express.js") ? 'selected' : '' %> >Node.js & Express.js</option>
+                    <option value="mongoDb&mongoose" <%= (category == "mongoDb&mongoose") ? 'selected' : '' %> >MongoDB & Mongoose</option>
+                    <option value="mySql" <%= (category == "mySql&postgreSql") ? 'selected' : '' %> >MySQL</option>
+                    <option value="webTechnologies" <%= (category == "webTechnologies") ? 'selected' : '' %> >Web Technologies</option>
+                    <option value="programmingExperience" <%= (category == "programmingExperience") ? 'selected' : '' %> >Programming Experience</option>
+                  </select>
+                </div>
+              </div>
+              <input
+                type="text"
+                name="tags"
+                id="tags"
+                placeholder="tags should space with , "
+                class="tags"
+                value="<%= tags %>"
+              />
+              <div class="tinymce-placeholer">
+                <textarea id="textarea" class="textarea" rows="37" name="post">
+                    <%= post %>
+                </textarea>
+              </div>
+              <input type="hidden" name="postId" value="<%= postId %>">
+              <button type="submit" class="post-upload-btn">Update Post</button>
+            </form>
+          </div>
+        </div>
+      </main>
+    </div>
+
+      <%- include('../includes/end') -%>

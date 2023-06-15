@@ -1,0 +1,42 @@
+<%- include('../includes/header') -%>
+<%- include('../includes/link-tinymce') -%>
+<%- include('../includes/meno') -%>
+      <!-- start middle section -->
+      <main>
+        <div class="add-post">
+          <div class="khat">
+            <h2>send Email</h2>
+          </div>
+          <div class="">
+            <form
+              action="/admin/user/sendEmail"
+              method="POST"
+              class="add-post-container"
+            >
+              <input
+              style="grid-column: 1/3;"
+              value="<%= userEmail %>"
+              type="email"
+              name="userEmail"
+              class="title"
+              placeholder="plese enter valid email!"
+              />
+              <input
+                type="text"
+                name="subject"
+                class="description"
+                placeholder="subject"
+              />
+              <div class="tinymce-placeholer">
+                <textarea id="textarea" class="textarea" rows="45" name="textEmail">
+                  just do it...
+                </textarea>
+              </div>
+              <button type="submit" class="post-upload-btn">send Email</button>
+            </form>
+          </div>
+        </div>
+      </main>
+    </div>
+
+      <%- include('../includes/end') -%>

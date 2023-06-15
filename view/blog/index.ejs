@@ -1,0 +1,114 @@
+<%- include('../includes/head-blog') -%>
+<%- include('../includes/link-blog-swiper') -%>
+<%- include('../includes/meno-blog') -%>
+
+
+<div class="m-2 content">
+  <!-- swiper -->
+  <div class="blog-slider" dir="ltr" >
+    <div class="blog-slider__wrp swiper-wrapper">
+      <% for(slide of slides){ %>
+
+      <div class="blog-slider__item swiper-slide">
+        <div class="blog-slider__img">
+          <img src="/<%= slide.imageUrl %>" alt="">
+        </div>
+        <div class="blog-slider__content">
+          <span class="blog-slider__code">1401/11/08</span>
+          <div class="blog-slider__title"><%= slide.title %></div>
+          <div class="blog-slider__text"><%= slide.description %></div>
+          <a href="<%= slide.postUrl %>" class="blog-slider__button">ادامه مطلب</a>
+        </div>
+      </div>
+       <% } %>
+      
+    </div>
+    <div class="blog-slider__pagination"></div>
+  </div>
+</div>
+
+<%- include('../includes/aside.ejs') -%>
+
+
+
+<div class="posts w-full mx-2 ">
+  <h2 class="text-white text-2xl text-center"><%= (search) ? 'نتیجه جستجو'  : 'مقالات' %> </h2>
+  <hr />
+  <% if(!search) { %>
+  <span class="flex gap-7 w-full justify-center lg:justify-start px-4">
+    <a href="?" class="<%= (!sort) ? 'text-white' : 'text-gray-400' %> text-lg">جدید ترین</a>
+    <a href="?sort=popular"  class="<%= (sort) ? 'text-white' : 'text-gray-400' %> text-lg">محبوب ترین</a>
+  </span>
+  <hr />
+  <% } %>
+  <div
+    class="grid  sm:grid-cols-2 md:grid-cols-2 xl:grid-cols-3 gap-6 md:gap-3 w-full mt-6 md:mt-3"
+  >
+  <% for(post of posts){ %>
+
+    <article
+      class="overflow-hidden rounded-lg shadow transition hover:shadow-lg h-[28rem] relative bg-cartColor"
+    >
+      <img
+        alt="Office"
+        src="/<%= post.imageUrl %>"
+        class="h-48 w-full object-fill hover:scale-110 transition duration-300 ease-in-out"
+      />
+
+      <div class="p-4 sm:p-6">
+        <div class="flex items-center justify-around">
+          <time  class="block text-xs text-gray-400">
+            <%= post.date.toLocaleString('fa-IR-u-nu-latn').split('،',1) %>
+          </time>
+          <p class="text-gray-400">❤️<%= (post.reaction && post.reaction.likes) ? post.reaction.likes.length : 0 %></p>
+          <p class="<%= post.category=='node.js&express.js' ? 'text-green-600' : post.category == 'mongoDb&mongoose' ? 'text-white' : '' %> "><%= post.category %></p>
+          
+        </div>
+
+        <a href="#">
+          <h3 class="mt-0.5 text-lg text-white">
+            <%= post.title %>
+          </h3>
+        </a>
+
+        <p
+          class="mt-2 text-sm leading-relaxed  line-clamp-3 text-gray-400"
+        >
+        <%= post.description %>
+      </p>
+      </div>
+      <a
+        href="/post/<%= post._id %>"
+        class="bg-primaryColor hover:bg-shadesPrimaryColor w-full p-1 absolute bottom-0 text-center"
+        >ادامه مطلب</a
+      >
+    </article>
+    <% } %>
+
+  </div>
+  <% if(!search){ %>
+    <section class="pagination">
+    <%- include('../includes/pagination') -%>
+    </section>
+    <% } %>
+    
+</div>
+</div>
+
+<%- include('../includes/aside-mobile.ejs') -%>
+
+<%- include('../includes/footer.ejs') -%>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

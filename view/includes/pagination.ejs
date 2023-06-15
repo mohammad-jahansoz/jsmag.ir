@@ -1,0 +1,13 @@
+<% if(currentPage != 1) { %>
+  <a href="?page=1&sort=<%= (sort) ? 'popular' : 'false' %>">1</a>
+  <% } %>
+  <% if(hasPrevious && previousNumber != 1){ %>
+   <a href="?page=<%= previousNumber %>&sort=<%= (sort) ? 'popular' : 'false' %>"><%= previousNumber %></a>
+   <% } %>
+  <a href="?page=<%= currentPage %>&sort=<%= (sort) ? 'popular' : 'false' %>" class="active"><%= currentPage %></a>
+  <% if(hasNext && nextNumber != totalPage) { %>
+   <a href="?page=<%= nextNumber %>&sort=<%= (sort) ? 'popular' : 'false' %>"><%= nextNumber %></a>
+   <% } %>
+  <% if(currentPage != totalPage) { %>
+  <a href="?page=<%= totalPage %>&sort=<%= (sort) ? 'popular' : 'false' %>"><%= totalPage %></a>
+  <% } %>

@@ -1,0 +1,55 @@
+<%- include('../includes/header') -%>
+<%- include('../includes/link') -%>
+<%- include('../includes/meno') -%>
+<%- include('../includes/top-setting') -%>
+
+  <div style="background-color: #1f344d; width: 100%; display: flex;
+  align-items: center;
+  justify-content: space-around;" >
+      <% for(slide of slides){ %>
+        <div class="setting-slider-el" >
+          <img src="/<%= slide.imageUrl %>" >
+          <h3><%= slide.title %></h3>
+          <span>
+            <a href="/admin/setting/slider/delete/<%= slide._id %> ">Delete</a>
+            <a href="/admin/setting/slider/edit/<%= slide._id %>">Edit</a>
+          </span>
+        </div>
+        <% } %>
+  </div>
+
+  <style>
+    
+    
+    .setting-slider-el img {
+     width: 200px;
+     height: 200px;
+      object-fit: cover;
+    }
+    .setting-slider-el {
+      border: 3px solid #f7df1e;
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+       gap: 8px;
+       padding-bottom: 10px;
+    }
+    .setting-slider-el span{
+      margin-top: 8px;
+    }
+    .setting-slider-el span a {
+      border-radius: 20px;
+      width: 100%;
+      /* background-color:#f7df1e ; */
+      padding: 8px;
+    }
+    .setting-slider-el span a:first-child{
+      background-color: red;
+    }
+    .setting-slider-el span a:last-child{
+      background-color: blue;
+    }
+  </style>
+  
+<%- include('../includes/bottom-setting') -%>
+<%- include('../includes/end') -%>

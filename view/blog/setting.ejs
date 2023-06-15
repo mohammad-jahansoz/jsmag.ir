@@ -1,0 +1,27 @@
+<%- include('../includes/head-blog') -%>
+<%- include('../includes/link-blog') -%>
+<%- include('../includes/meno-blog') -%>
+
+<div class="setting-el">
+  <main
+      aria-labelledby="pageTitle"
+      class="flex items-center justify-center  bg-cartColor max-w-7xl mx-auto rounded-2xl my-5 " style="margin-bottom: 100px;">
+      <div class="w-full   text-white p-4"> 
+
+        <h4 class="text-primaryColor">
+          لایک ها
+        </h4>
+        
+        <p>میتونید پست های مورد علاقتون رو با لایک کردن ذخیره کنید تا هم حمایتی برای ما بشه و هم ذخیره داشته باشیدش توی اکانتتون و بدون نیاز به گشتن و یا ذخیره کردن لینک پست مورد نظرتون همیشه بهش دسترسی داشته باشید</p>
+        <hr>
+        <h4 class="text-primaryColor">تنظیمات پروفایل</h4>
+        <p>توی قسمت تنظیمات پروفایل هم میتونید برای پروفایلتون عکس انتخاب کنید و یا اسم بزارید . در صورت انتخاب اسم برای خودتون کامنت گذاشتن راحت میشه و مجبور نیستید هربار برای کامنت گذاشتن دوباره اسمتون رو وارد کنید!</p>
+      </div>
+      <div style=" min-width: 20%; text-align: center; border: 1px solid #f7df1e; font-size: larger; display: flex; flex-direction: column; gap: 10px; " class=" h-full text-white flex flex-col rounded-l-xl">
+        <h3 style="font-size:x-large; border-bottom: 1px solid #f7df1e; border-radius: 20px;" >setting</h3>
+        <a href="/setting/likes/<%= user.email %>">لایک ها</a>
+        <a href="/setting/profile">تنظیمات پروفایل</a>
+      </div>
+  </main>
+</div>
+<%- include('../includes/footer') -%>

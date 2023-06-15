@@ -1,0 +1,56 @@
+<%- include('../includes/header') -%>
+<%- include('../includes/link') -%>
+<%- include('../includes/meno') -%>
+<%- include('../includes/top-setting') -%>
+
+  <div style="background-color: #1f344d; width: 100%;" >
+    <form action="/admin/setting/upload"  enctype="multipart/form-data" method="POST" style="display: flex; flex-direction: column; justify-content: space-around; height: 100%; padding: 16px;">
+      <input type="text" name="title" >
+      
+      <div class="text-input">
+        <p>type?</p>
+        <select name="type" id="type" class="type">
+          <label for="type">type</label>
+          <option value="image" selected>Image</option>
+          <option value="video">Video</option>
+          <option value="voice">Voice</option>
+          <option value="file">File</option>
+        </select>
+      </div>
+
+      <input type="file" name="file">
+      <!-- <div class="text-input">
+        <p>type of File?</p>
+        <input
+          type="radio"
+          name="type"
+          value="image"
+          class="status"
+          checked
+        />
+        <label for="image">image</label>
+        <input
+          type="radio"
+          name="type"
+          value="video"
+        />
+        <label for="video">video</label>
+        <input
+          type="radio"
+          name="type"
+          value="voice"
+        />
+        <label for="voice">voice</label>
+        <input
+          type="radio"
+          name="type"
+          value="file"
+        />
+        <label for="file">file</label>
+      </div> -->
+      <button type="submit" style="background-color: #f7df1e; padding: 8px; border-radius: 20px; ">Upload</button>
+    </form>
+  </div>
+  
+<%- include('../includes/bottom-setting') -%>
+<%- include('../includes/end') -%>

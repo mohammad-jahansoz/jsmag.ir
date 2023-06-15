@@ -1,0 +1,89 @@
+</div>
+<style>
+/* Fixed sidenav, full height */
+input{
+  border: 1px solid #f7df1e;
+}
+.sidenav a , .sidenav button{
+  display: block;
+  text-align: center;
+}
+.sidenav-el{
+  border: 1px solid #f7df1e;
+}
+.sidenav {
+display: flex;
+flex-direction: column;
+
+width: 300px;
+z-index: 1;
+background-color: rgb(13, 35, 61);
+overflow-x: hidden;
+padding-top: 20px;
+}
+
+/* Style the sidenav links and the dropdown button */
+.sidenav a, .dropdown-btn {
+
+padding-top: 16px ;
+padding-bottom: 16px ;
+text-decoration: none;
+font-size: 20px;
+color: #818181;
+display: block;
+border: none;
+background: none;
+width:100%;
+cursor: pointer;
+outline: none;
+}
+
+/* On mouse-over */
+.sidenav a:hover, .dropdown-btn:hover {
+background-color: #f7df1e; 
+}
+ .dropdown-btn:focus {
+background-color: #f7df1e; 
+}
+
+/* Main content */
+.main {
+margin-left: 200px; /* Same as the width of the sidenav */
+font-size: 20px; /* Increased text to enable scrolling */
+padding: 0px 10px;
+}
+
+/* Add an active class to the active dropdown button */
+.active {
+background-color: #f7df1e;
+color: black;
+}
+
+/* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+.dropdown-container {
+display: none;
+background-color: #262626;
+}
+
+/* Optional: Style the caret down icon */
+.fa-caret-down {
+float: right;
+padding-right: 8px;
+}
+</style>
+<script>
+var dropdown = document.getElementsByClassName("dropdown-btn");
+var i;
+
+for (i = 0; i < dropdown.length; i++) {
+dropdown[i].addEventListener("click", function() {
+  this.classList.toggle("active");
+  var dropdownContent = this.nextElementSibling;
+  if (dropdownContent.style.display === "block") {
+    dropdownContent.style.display = "none";
+  } else {
+    dropdownContent.style.display = "block";
+  }
+});
+}
+</script>

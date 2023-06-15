@@ -1,0 +1,25 @@
+<%- include('../includes/head-blog') -%>
+<%- include('../includes/link-blog') -%>
+<%- include('../includes/meno-blog') -%>
+
+<div class="setting-el">
+  <main
+      aria-labelledby="pageTitle"
+      class="flex items-center justify-center  bg-cartColor max-w-7xl mx-auto rounded-2xl my-5 " style="margin-bottom: 100px;">
+      <div class="w-full h-full"> 
+        <div class="grid  grid-rows-4" style="grid-template-columns: repeat(5,minmax(0,1fr));">
+          <% for(post of posts){ %>
+            <a href="/post/<%= post._id %>" >
+              <img src="/<%= post.imageUrl %>" style="height: 100%; border: 1px solid #f7df1e ;" >
+            </a>
+            <% } %>
+          </div>
+      </div>
+      <div style=" min-width: 20%; text-align: center; border: 1px solid #f7df1e; font-size: larger; display: flex; flex-direction: column; gap: 10px; " class=" rounded-l-xl h-full text-white flex flex-col">
+        <h3 style="font-size:x-large; border-bottom: 1px solid #f7df1e; border-radius: 20px;">setting</h3>
+        <a href="#">لایک ها</a>
+        <a href="/setting/profile">تنظیمات پروفایل</a>
+      </div>
+  </main>
+</div>
+<%- include('../includes/footer') -%>

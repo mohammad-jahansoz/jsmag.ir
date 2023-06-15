@@ -1,0 +1,82 @@
+<%- include('../includes/header') -%>
+<%- include('../includes/link') -%>
+<%- include('../includes/meno') -%>
+      <!-- start middle section -->
+      <main>
+        <!-- <h1>Posts</h1> -->
+        <div class="insights grid grid-cols-1 gap-7">
+          <!-- total view -->
+          <div class="post-main-top views gap-2 grid grid-cols-4">
+            <div class="text-center">
+              <span class="material-icons-sharp"> people </span>
+              <div class="left">
+                <h3>Total Users</h3>
+                <h2><%= users.length %></h2>
+              </div>
+            </div>
+            <div class="text-center">
+              <span class="material-icons-sharp"> message </span>
+              <div class="left">
+                <h3>Total  Comments</h3>
+                <h2><%= totalCommentsLength %></h2>
+              </div>
+            </div>
+            <div class="text-center">
+              <span class="material-icons-sharp"> chat </span>
+              <div class="left">
+                <h3>Total User Comments</h3>
+                <h2><%= totalUserCommentsLength %></h2>
+              </div>
+            </div>
+            <div class="text-center">
+              <span class="material-icons-sharp"> favorite </span>
+              <div class="left">
+                <h3>Total Like</h3>
+                <h2><%= totalLikesLength %> </h2>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- start posts section -->
+        <div class="users">
+          <div style="display: flex; justify-content: space-between;" class="khat">
+            <h1 ><%= pageTitle %></h1>
+            <form action="/admin/users/search" method="POST">
+              <button type="submit" class="post-upload-btn">Search</button>
+              <input type="text" style="width: 400px;" name="email">
+            </form>
+          </div>
+          <table>
+            <thead>
+              <th>Email</th>
+              <th>Date</th>
+              <th>Total Comment</th>
+              <th>Total Like</th>
+              <th>Action</th>
+            </thead>
+            <tbody>
+              <% for( user of users){ %>
+              <tr>
+                <td class="user-email">
+                  <a href="/admin/user/sendEmail/<%= user.email %>"><%= user.email %></a>
+                </td>
+                <td><%= user.date.toLocaleString('fa-IR-u-nu-latn') %></td>
+                <td>
+                  <a href="/admin/users/comments/<%= user.email %>"><%=  user.reactionLength.comments.length %> </a>
+                </td>
+                <td>
+                  <a href="/admin/users/likes/<%= user.email %>"><%=  user.reactionLength.likes.length %> </a>
+                <td>
+                  <a href="#">
+                    <p>Delete And Block</p>
+                    <span class="material-icons-sharp"> delete </span>
+                  </a>
+                </td>
+              </tr>
+              <% } %>
+            </tbody>
+          </table>
+        </div>
+      </main>
+    </div>
+      <%- include('../includes/end') -%>

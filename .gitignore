@@ -1,0 +1,6 @@
+node_modules
+.env
+*~
+# public/images
+liara.json
+remember.txt

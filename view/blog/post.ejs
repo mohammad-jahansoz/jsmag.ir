@@ -1,0 +1,190 @@
+<%- include('../includes/head-blog') -%>
+<%- include('../includes/link-blog') -%>
+<%- include('../includes/meno-blog') -%>
+
+
+<%- include('../includes/aside.ejs') -%>
+
+
+<div class="w-full " style="margin-right: 0.5rem; margin-left: 0.5rem;">
+  <div class="bg-cartColor pb-5 rounded-lg">
+    <div
+      class="rounded-t-lg w-full h-72 md:h-128 relative text-lg text-white"
+    >
+      <img
+        src="/<%= post.imageUrl %>"
+        class="object-cover w-full h-full rounded-t-lg"
+      />
+      <h1
+        class="md:text-lg lg:text-xl absolute bottom-0 py-2 px-3 bg-cartColor rounded-t-xl left-1/2 transform -translate-x-1/2 text-center text-base w-full md:w-auto"
+      >
+<%= post.title %>
+    </h1>
+      <a class="absolute p-2 top-3 right-0 bg-cartColor rounded-l-xl"
+        ><%= post.reaction.likes.length %>❤️</a
+      >
+      <a class="absolute p-2 top-3 left-0 bg-cartColor rounded-r-xl"
+        >💬<%= post.reaction.comments.length %></a
+      >
+    </div>
+    <div class="flex justify-between text-white m-2">
+      <p>👨🏻‍💻  <%= post.author %> </p>
+      <p>📅 <%= post.date.toLocaleString('fa-IR-u-nu-latn').split('،',1) %></p>
+    </div>
+    <hr />
+    <div class=" post-section   m-2 p-3">
+     
+        <%- post.post %>
+      
+    </div>
+    <hr>
+    <div class="flex items-center justify-between gap-8 p-3 mt-4 text-white">
+      <input type="hidden" name="postId" value="<%= post._id %>">
+      <svg onclick="like(this)"  id="like-btn" style="transition: color 0.5s ease-in-out ; cursor: pointer; max-width: 50px; min-height: 50px; min-width: 50px;  max-height: 50px;" class="like-btn <%- like=='true'  ? 'like-btn-click ' : '' %>"  xmlns="http://www.w3.org/2000/svg"  fill="currentColor" class="bi bi-bookmark-heart-fill" viewBox="0 0 16 16"> <path d="M2 15.5a.5.5 0 0 0 .74.439L8 13.069l5.26 2.87A.5.5 0 0 0 14 15.5V2a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v13.5zM8 4.41c1.387-1.425 4.854 1.07 0 4.277C3.146 5.48 6.613 2.986 8 4.412z" ></path> </svg>
+      <p>شما با <span style="color: red;">لایک کردن</span> پست ها علاوه بر اینکه از ما حمایت میکنید❤️ پست هارو توی اکانتتون ذخیره میکنید تا هر وقت خاستید به راحتی دسترسی داشته باشید بهشون</p>
+    </div>
+  </div>
+  <h3 class="text-white text-2xl mt-7 w-full">پست های مشابه</h3>
+  <hr class="my-2" />
+  <div
+    class=" related-post-el flex items-center justify-around flex-col gap-3  "
+  >
+  <% for(relatedPost of relatedPosts) { %>
+    <div class="rounded-lg shadow-lg bg-cartColor w-full justify-center">
+      <a href="/post/<%= relatedPost._id %>">
+        <img
+          class="rounded-t-lg w-full h-44 object-cover"
+          src="/<%= relatedPost.imageUrl %>"
+          alt=""
+        />
+      </a>
+      <div class="px-5 py-4">
+        <h5 class="text-white h-8 lg:h-14 mb-1 text-center">
+<%= relatedPost.title %>
+        </h5>
+      </div>
+    </div>
+    <% } %>
+  </div>
+
+  <div class="comments">
+    <section class="py-8 lg:py-16">
+      <div class="max-w-2xl mx-auto ">
+        <div class="flex justify-between items-center mb-6">
+          <h2 class="text-lg lg:text-2xl font-bold text-white">
+            (<%= post.reaction.comments.length %>) کامنت
+          </h2>
+        </div>
+        <form class="mb-6" action="/post/comment/<%= post._id %>" method="POST" >
+          <div class="flex w-full justify-around gap-2 mb-2">
+            <input
+              type="email"
+              name="email"
+              <%= (user) ? 'readonly="readonly"' : '' %>
+              value="<%= (user) ? user.email : '' %>"
+              placeholder="<%= (user) ? user.email : 'ایمیل' %>"
+              class="p-2 w-full text-sm border border-gray-700 text-white placeholder-gray-400 bg-gray-800 <%= (user) ? 'cursor-not-allowed text-gray-400' : '' %>"
+            />
+            <input
+            type="text"
+            name="name"
+            <%= (user && user.name) ? 'readonly="readonly"' : '' %>
+              value="<%= (user && user.name) ? user.name : '' %>"
+              placeholder="<%= (user && user.name) ? user.name : 'نام' %>"
+              class="p-2 w-full text-sm border border-gray-700 text-white placeholder-gray-400 bg-gray-800 <%= (user && user.name) ? 'cursor-not-allowed text-gray-400' : '' %>" />
+          </div>
+          <div
+            class="py-2 px-4 mb-4 rounded-lg rounded-t-lg border bg-gray-800 border-gray-700"
+          >
+            <label for="comment" class="sr-only">Your comment</label>
+            <textarea
+            name="comment"
+              id="comment"
+              rows="6"
+              class="px-0 w-full text-sm border-0 focus:ring-0 focus:outline-none text-white placeholder-gray-400 bg-gray-800"
+              placeholder="لطفا نظر خود را بنویسید..."
+              required
+            ></textarea>
+          </div>
+          <button
+            type="submit"
+            class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center bg-primaryColor rounded-lg focus:ring-4 focus:ring-shadesPrimaryColor"
+          >
+            ارسال کامنت
+          </button>
+        </form>
+        <% for(comment of post.reaction.comments.reverse()){ %>
+        <div class="comment mb-4 flex flex-col items-center">
+          <article class="p-6 text-base rounded-lg bg-gray-900 w-full">
+            <footer class="flex justify-between items-center mb-2">
+              <div class="flex w-full items-center justify-between">
+                <p
+                  class="inline-flex items-center mr-3 text-sm  text-white"
+                >
+                  <img
+                    class="mr-2 w-6 h-6 rounded-full"
+                    src="<%= (comment.imageUrl) ? comment.imageUrl : '/public\\images\\users\\1401&9&20،‏20-28-48-default-profile3.jpg' %>"
+                  /><%= comment.name %>
+                </p>
+                <p class="text-sm text-gray-400">
+                  <time
+                    pubdate
+                    ><%= comment.date.toLocaleString('fa-IR-u-nu-latn').split('،',1) %></time
+                  >
+                </p>
+              </div>
+            </footer>
+            <p class="text-gray-400">
+              <%= comment.comment %>
+            </p>
+          </article>
+          <% if(comment.reply){ %>
+          <article
+            class="p-6 w-4/5 text-base rounded-lg bg-gray-900 border-primaryColor border"
+          >
+            <footer class="flex justify-between items-center mb-2">
+              <div class="flex items-center w-full justify-between">
+                <p
+                  class="inline-flex items-center mr-3 text-sm text-white"
+                >
+                  <img
+                    class="mr-2 w-6 h-6 rounded-full"
+                    src="/public\images\users\1401&9&20،‏20-31-57-admin.jpg"
+                  />محمد جهانسوز
+                </p>
+                <p class="text-sm text-gray-400">
+                  پاسخ ادمین
+              </div>
+              <!-- Dropdown menu -->
+            </footer>
+            <p class="text-gray-400">
+              <%= comment.reply %>
+            </p>
+          </article>
+          <% } %>
+        </div>
+        <% } %>
+        
+      </div>
+    </section>
+  </div>
+</div>
+
+
+<%- include('../includes/aside-mobile.ejs') -%>
+
+<%- include('../includes/footer.ejs') -%>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

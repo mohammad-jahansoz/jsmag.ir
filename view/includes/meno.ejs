@@ -1,0 +1,54 @@
+<body class="">
+    <div class="post-container text-sm">
+      <aside class="bg-cart-color h-screen">
+        <div class="top flex justify-between mx-4 my-3 mt-7">
+          <div class="logo">
+            <h2 class="text-base">
+              <span
+                class="bg-primary-color-yellow px-3 py-1 text-black text-base font-bold rounded-full">
+                JS
+              </span>
+              MAG.IR
+            </h2>
+          </div>
+          <div class="close-btn" id="close-btn">
+            <span class="material-icons-sharp"> close </span>
+          </div>
+        </div>
+        <div class="sidebar flex-col h-5/6 relative top-12">
+          <a href="/admin">
+            <span class="material-icons-sharp"> dashboard </span>
+            <h3>Dashboard</h3>
+          </a>
+          <a href="/admin/users" class="<%= path=='admin/users' ? 'active' : '' %> ">
+            <span class="material-icons-sharp"> people </span>
+            <h3>Users</h3>
+          </a>
+          <a href="/admin/posts" class="<%= path=='admin/posts' ? 'active' : '' %>">
+            <span class="material-icons-sharp"> article </span>
+            <h3>Posts</h3>
+          </a>
+          <a href="#">
+            <span class="material-icons-sharp"> trending_up </span>
+            <h3>Analytics</h3>
+          </a>
+          <a href="/admin/user/sendEmail/" class="<%= path=='admin/user/sendEmail' ? 'active' : '' %>">
+            <span class="material-icons-sharp"> email </span>
+            <h3>Message(Email)</h3>
+            <p class="msg-count">1</p>
+          </a>
+          <a href="/admin/comments" class="<%= path=='admin/comments' ? 'active' : '' %>">
+            <span class="material-icons-sharp"> chat </span>
+            <h3>Comment</h3>
+            <p class="msg-count">4</p>
+          </a>
+          <a href="/admin/setting" class="<%= path=='admin/setting' ? 'active' : '' %>">
+            <span class="material-icons-sharp"> settings </span>
+            <h3>Setting</h3>
+          </a>
+          <a href="/admin/logout">
+            <span class="material-icons-sharp"> logout </span>
+            <h3>Logout</h3>
+          </a>
+        </div>
+      </aside>

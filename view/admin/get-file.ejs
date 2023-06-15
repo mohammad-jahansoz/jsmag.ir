@@ -1,0 +1,18 @@
+<%- include('../includes/header') -%>
+<%- include('../includes/link') -%>
+<%- include('../includes/meno') -%>
+<%- include('../includes/top-setting') -%>
+
+  <div style="background-color: #1f344d; width: 100%; display:grid ; grid-template-columns: 1fr 1fr 1fr; grid-template-rows: 1fr 1fr 1fr;" >
+    <% for(file of files){ %>
+<SPAN>
+  <img src="/<%= file.addressUrl %>" class="w-full h-full" >
+</SPAN>
+      <% } %>
+  </div>
+
+
+ 
+  
+<%- include('../includes/bottom-setting') -%>
+<%- include('../includes/end') -%>

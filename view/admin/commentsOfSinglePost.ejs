@@ -1,0 +1,78 @@
+<%- include('../includes/header') -%>
+<%- include('../includes/link') -%>
+<%- include('../includes/meno') -%>
+      <!-- start middle section -->
+      <main>
+        <div class="insights grid grid-cols-1 gap-7">
+          <!-- total view -->
+          <div class="post-main-top views gap-2 grid grid-cols-4">
+            <div class="text-center">
+              <span class="material-icons-sharp"> people </span>
+              <div class="left">
+                <h3>Total Users</h3>
+                <h2>113</h2>
+              </div>
+            </div>
+            <div class="text-center">
+              <span class="material-icons-sharp"> chat </span>
+              <div class="left">
+                <h3>Total  Comments</h3>
+                <h2><%= comments.length %></h2>
+              </div>
+            </div>
+            <div class="text-center">
+              <span class="material-icons-sharp"> chat </span>
+              <div class="left">
+                <h3>Total User Comments</h3>
+                <h2>81</h2>
+              </div>
+            </div>
+            <div class="text-center">
+              <span class="material-icons-sharp"> favorite </span>
+              <div class="left">
+                <h3>Total Like</h3>
+                <h2>517</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- start posts section -->
+        <div class="comments-section-single-post">
+          <h1 class="khat" style="font-family: tanha;">کامنت های پست( <%= pageTitle %>)</h1>
+          <ul class="comment-container-single-post">
+            <% for(comment of comments){ %>
+
+              <li>
+                <form class="form-comment-section" action="/admin/comments/update/<%= post.postId %>/<%= comment._id %>" method="POST" id="form-<%= comment._id %>">
+                  <input
+                    type="text"
+                    name="comment"
+                    id=""
+                    value="<%= comment.comment %>"
+                  />
+                  <textarea
+                    name="reply"
+                    
+                    id=""
+                    cols="30"
+                    rows="6"
+                    class=""
+                  ><%= comment.reply %></textarea>
+                </form>
+                <div class="">
+                  <a href="/admin/user/sendEmail/<%=comment.email%>" class="email-comment-secion">
+                    <%= comment.email %>
+                  </a>
+                  <p><%= comment.date.toLocaleString('fa-IR-u-nu-latn') %></p>
+                </div>
+                <div class="action-comment-secion">
+                  <a href="/admin/comments/delete/<%= post.postId %>/<%= comment._id %>">Delete</a>
+                  <input type="submit"  value="Save" form="form-<%= comment._id %>" ></input>
+                </div>
+              </li>
+              <% } %>
+          </ul>
+        </div>
+      </main>
+    </div>
+      <%- include('../includes/end') -%>

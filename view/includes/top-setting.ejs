@@ -1,0 +1,27 @@
+<div style="width: 1100px; height: 500px; margin: auto; display: flex; " class="sidenav-el" >
+ 
+  <div class="sidenav" >
+    <a href="#about">About</a>
+    <a href="/admin/setting/upload" class="<%= (subPath == 'upload') ? 'active' : '' %>">Upload</a>
+    <!-- <button  class="dropdown-btn <%= (subPath == 'upload') ? 'active' : '' %>" >Upload
+      <i class="fa fa-caret-down"></i>
+    </button> -->
+    <button  class="dropdown-btn <%= (subPath == 'files') ? 'active' : '' %>" >Files
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-container">
+      <a href="/admin/setting/files/image">image</a>
+      <a href="/admin/setting/files/video">Video</a>
+      <a href="/admin/setting/files/voice">Voice</a>
+      <a href="/admin/setting/files/file">Files</a>
+    </div>
+
+    <button  class="dropdown-btn <%= (subPath == 'slider') ? 'active' : '' %>" > Slider Setting
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-container">
+      <a href="/admin/setting/slider/add-new">Add New Slider</a>
+      <a href="/admin/setting/slider/management"> Slider Managment </a>
+    </div>
+    
+  </div>

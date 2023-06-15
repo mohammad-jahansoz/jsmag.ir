@@ -1,0 +1,84 @@
+<%- include('../includes/header') -%>
+<%- include('../includes/link') -%>
+<%- include('../includes/meno') -%>
+      <!-- start middle section -->
+      <main>
+        <div class="insights grid grid-cols-1 gap-7">
+          <!-- total view -->
+          <div class="post-main-top views gap-2 grid grid-cols-4">
+            <div class="text-center">
+              <span class="material-icons-sharp"> people </span>
+              <div class="left">
+                <h3>Total Users</h3>
+                <h2><%= totalUsersLength %></h2>
+              </div>
+            </div>
+            <div class="text-center">
+              <span class="material-icons-sharp"> chat </span>
+              <div class="left">
+                <h3>Total  Comments</h3>
+                <h2><%= commentsWithPosts.length %></h2>
+              </div>
+            </div>
+            <div class="text-center">
+              <span class="material-icons-sharp"> chat </span>
+              <div class="left">
+                <h3>Total User Comments</h3>
+                <h2><%= totalCommentsLength %></h2>
+              </div>
+            </div>
+            <div class="text-center">
+              <span class="material-icons-sharp"> favorite </span>
+              <div class="left">
+                <h3>Total Like</h3>
+                <h2><%= totalLikesLength %></h2>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- start posts section -->
+        <div class="comments-section">
+          <h1 class="khat">Recent Comments</h1>
+          <ul class="comment-container">
+            <% for(commentWithPost of commentsWithPosts){ %>
+              <li>
+                <div class="image-container">
+                  <img src="/<%= commentWithPost.imageUrl %>" alt="express" class="" />
+                 <a href="/blog/post/<%= commentWithPost.postId %>" target="_blank" >
+                  <p class="title-comments-section">
+                <%= commentWithPost.title %>
+              </p>
+            </a>
+                </div>
+                <form class="form-comment-section" action="/admin/comments/update/<%= commentWithPost.postId %>/<%= commentWithPost.commentId %>" method="POST" id="form-<%= commentWithPost.commentId %>">
+                  <input
+                    type="text"
+                    name="comment"
+                    id=""
+                    value="<%= commentWithPost.comment %>"
+                  />
+                  <textarea
+                    name="reply"
+                    id=""
+                    cols="30"
+                    rows="6"
+                    class=""
+                  ><%= commentWithPost.reply %></textarea>
+                </form>
+                <div class="">
+                  <a href="/admin/user/sendEmail/<%= commentWithPost.email %>" class="email-comment-secion">
+                    <%= commentWithPost.email %>
+                  </a>
+                  <p><%= commentWithPost.date.toLocaleString('fa-IR-u-nu-latn') %></p>
+                </div>
+                <div class="action-comment-secion">
+                  <a href="/admin/comments/delete/<%= commentWithPost.postId %>/<%= commentWithPost.commentId %>">Delete</a>
+                  <input type="submit"  value="Save" form="form-<%= commentWithPost.commentId %>" ></input>
+                </div>
+              </li>
+              <% } %>
+          </ul>
+        </div>
+      </main>
+    </div>
+      <%- include('../includes/end') -%>

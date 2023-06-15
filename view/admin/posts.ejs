@@ -1,0 +1,118 @@
+<%- include('../includes/header') -%>
+<%- include('../includes/link') -%>
+<%- include('../includes/meno') -%>
+      <!-- start middle section -->
+      <main>
+        <!-- <h1>Posts</h1> -->
+        <div class="insights">
+          <!-- total view -->
+          <div class="post-main-top views gap-2 grid grid-cols-4">
+            <div class="text-center">
+              <span class="material-icons-sharp"> leaderboard </span>
+              <div class="left">
+                <h3>Total View</h3>
+                <h2><%= totalView %></h2>
+              </div>
+            </div>
+            <div class="text-center">
+              <span class="material-icons-sharp"> article </span>
+              <div class="left">
+                <h3>Total Posts</h3>
+                <h2><%= posts.length %></h2>
+              </div>
+            </div>
+            <div class="text-center">
+              <span class="material-icons-sharp"> chat </span>
+              <div class="left">
+                <h3>Total Comments</h3>
+                <h2><%= totalComments %></h2>
+              </div>
+            </div>
+            <div class="text-center">
+              <span class="material-icons-sharp"> favorite </span>
+              <div class="left">
+                <h3>Total Like</h3>
+                <h2><%= totalLikes %></h2>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- start posts section -->
+        
+          <div style="display: flex; justify-content: space-between;" class="khat">
+            <h1 ><%= pageTitle %></h1>
+            <form action="/admin/posts/search" method="POST">
+              <button type="submit" class="post-upload-btn">Search</button>
+              <input type="text" style="width: 400px;" name="postData">
+            </form>
+          
+        </div>
+        <div class="insights posts-section-style">
+          <% for(post of posts){ %>
+          <div class="post relative">
+            <div class="post-el">
+              <div class="post-info">
+                <img src="/<%= post.imageUrl %>" />
+                <h3 class="khat" style="overflow: hidden ;"><%= post.title %></h3>
+                <div class="w-full">
+                  <div class="flex justify-around">
+                    <div>
+                      <span class="icon material-icons-sharp">
+                        trending_up
+                      </span>
+                      <p><%= (post.reaction && post.reaction.totalView) ? post.reaction.totalView : 0 %></p>
+                    </div>
+                    <div>
+                      <span class="icon material-icons-sharp"> favorite </span>
+                      <p><%= (post.reaction && post.reaction.likes) ? post.reaction.likes.length : 0 %></p>
+                    </div>
+                    <div>
+                      <span class="icon material-icons-sharp"> chat </span>
+                      <p><%= (post.reaction && post.reaction.comments) ? post.reaction.comments.length : 0 %></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="delete-edit"
+              >
+                <a
+                  href="/admin/comment/<%= post._id %>"
+                  class="post-comments-btn"
+                >
+                  <span class="icon material-icons-sharp"> chat </span>
+                  <p>Comments</p>
+                </a>
+                <a
+                  href="/admin/likes/<%= post._id %>"
+                  class="post-likes-btn"
+                >
+                  <span class="icon material-icons-sharp"> favorite </span>
+                  <p>Likes</p>
+                </a>
+
+                <a
+                  href="/admin/posts/update-post/<%= post._id %>"
+                  class="post-edit-btn"
+                >
+                  <span class="icon material-icons-sharp"> edit </span>
+                  <p>Edit</p>
+                </a>
+                <a
+                  href="/admin/posts/delete-post/<%= post._id %>"
+                  class="post-delete-btn"
+                >
+                  <span class="icon material-icons-sharp"> delete </span>
+                  <p>Delete</p>
+                </a>
+              </div>
+            </div>
+          </div>
+          <% } %>
+        </div>
+      </main>
+    </div>
+    <a href="/admin/add-post" id="add-post"
+      ><span class="material-icons-sharp"> add </span>
+    </a>
+      <%- include('../includes/end') -%>
